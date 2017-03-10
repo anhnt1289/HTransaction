@@ -13,7 +13,7 @@ class DataService {
     
     private var _BASE_REF = FIRDatabase.database().referenceFromURL(BASE_URL)
     private var _USER_REF = FIRDatabase.database().referenceFromURL("\(BASE_URL)/users")
-    private var _JOKE_REF = FIRDatabase.database().referenceFromURL("\(BASE_URL)/jokes")
+    private var _TRANSACTION_REF = FIRDatabase.database().referenceFromURL("\(BASE_URL)/transactions")
     
     var BASE_REF: FIRDatabaseReference {
         return _BASE_REF
@@ -31,8 +31,8 @@ class DataService {
         return currentUser
     }
     
-    var JOKE_REF: FIRDatabaseReference {
-        return _JOKE_REF
+    var TRANSACTION_REF: FIRDatabaseReference {
+        return _TRANSACTION_REF
     }
     
     func createNewAccount(uid: String, user: Dictionary<String, String>) {
@@ -48,7 +48,7 @@ class DataService {
         // JOKE_REF is the parent of the new Joke: "jokes".
         // childByAutoId() saves the joke and gives it its own ID.
         
-        let firebaseNewJoke = JOKE_REF.childByAutoId()
+        let firebaseNewJoke = TRANSACTION_REF.childByAutoId()
         
         // setValue() saves to Firebase.
         
